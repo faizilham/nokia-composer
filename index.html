@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<title>Nokia Composer</title>
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+		<link href="player.css" rel="stylesheet" />
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="nokia-composer.js"></script>
+	</head>
+	
+	<body>
+		<div class="content">
+			<div id="player">
+				<h3>Nokia Composer Player</h3>
+				<textarea id="editor"></textarea>
+				<div class="control-bar">
+					BPM <input type="text" id="bpm" value="100"/>
+					Wave <select onchange="changeWaveType(this)">
+						<option value="sine" selected>Sine</option>
+						<option value="square">Square</option>
+						<option value="sawtooth">Sawtooth</option>
+						<option value="triangle">Triangle</option>
+					</select>
+					<button id="playbtn" onclick="play()" class="btn btn-default"><i class="fa fa-play"></i> Play</button>
+					<button id="stopbtn" onclick="stop()" class="btn btn-default"><i class="fa fa-stop"></i> Stop</button>
+				</div>
+				<div class="control-bar" id="message">
+				</div>
+			</div>	
+		</div>
+		
+		<div class="footer">
+			<a href="">More Songs</a> | <a href="">Fork Me</a>
+		</div>
+		
+		<script>
+			/**** player script ****/
+		
+			const composer = new NokiaComposer();
+			let editor, playbtn, stopbtn;
+			
+			/** on stop listener: change button value and click **/
+			composer.onStop = function(){
+				stopbtn.hide(); playbtn.show();
+				editor.prop("readonly", false);
+				
+				let length = editor.val().length;
+				selectEditorText(length, length);
+			};
+			
+			/** on note playing listener: highlight current note **/
+			composer.onNotePlaying = function(note, start_pos, end_pos){
+				selectEditorText(start_pos, end_pos);
+			};
+			
+			function play(){
+				let notes = editor.val();
+				let bpm = parseInt($("#bpm").val()) || 100;
+				
+				let messagediv = $("#message");
+				
+				messagediv.text("");
+				try{
+					let tunes = composer.parse(notes);
+					
+					playbtn.hide(); stopbtn.show(); editor.prop("readonly", true);
+					composer.play(tunes, bpm);
+				} catch (e){
+					selectEditorText(e.start_pos, e.end_pos);
+					messagediv.text("Invalid note: " + e.token);
+				}
+			}
+			
+			function stop(){
+				composer.stop();
+			}
+			
+			function selectEditorText(start_pos, end_pos){
+				editor.focus();
+				editor[0].setSelectionRange(start_pos, end_pos);
+			}			
+			
+			function changeWaveType(target){
+				composer.setWaveType(target.value);				
+			}
+			
+			$(document).ready(function(){
+				editor = $("#editor");
+				playbtn = $("#playbtn");
+				stopbtn = $("#stopbtn");
+				stopbtn.hide();
+				
+				const default_song = "8c2 8c2 8c2 8e2 8a2 8e2 4g2 8g2 8a2 8g2 8e2 8f2 8e2 4d2 8d2 8d2 8d2 8f2 8b2 8b2 8a2 8g2 4f2 4f2 4b1 4d2 4c2 8-";
+				
+				editor.val(default_song);
+			});
+		</script>
+	</body>
+</html>
