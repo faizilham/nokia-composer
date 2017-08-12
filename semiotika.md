@@ -1,5 +1,6 @@
 Original post by Ｓｅｍｉｏｔｉｋａ ａｄｉｌｕｈｕｎｇ １９４５([link](https://www.facebook.com/notes/%EF%BD%93%EF%BD%85%EF%BD%8D%EF%BD%89%EF%BD%8F%EF%BD%94%EF%BD%89%EF%BD%8B%EF%BD%81-%EF%BD%81%EF%BD%84%EF%BD%89%EF%BD%8C%EF%BD%95%EF%BD%88%EF%BD%95%EF%BD%8E%EF%BD%87-%EF%BC%91%EF%BC%99%EF%BC%94%EF%BC%95/5058f1af/549080931969304/))
 
+```
 Agnes Monica: Pernikahan Dini
 Notasi Nokia Composer 160
 8f1 8g1 8a1 8.b1 8.#a1 2.b1 2- 8.b1 8.c2 8.b1 8.a1 8.g1 8.d1 8.d2 8.b1 8.d2 8.#c2 4.#c2 2- 8.#c2 8.d2 8.#c2 8.c2 8.b1 8.g1 8.b1 8.#f1 8.a1 8.#g1 8.#g1 4- 8.#g1 8.g1 32- 4.e1 32- 4.c1 32- 4.c2 4.b1
@@ -275,3 +276,4 @@ Notasi Nokia Composer 140
 WR Supratman: Lagu kebangsaan - Indonesia Raya
 Notasi Nokia Composer
 8e1 16f1 8g1 8e2 16- 8e2 8d2 16d2 8c2 8g1 16- 8g1 16g1 8a1 8g1 8f1 8e1 8d1 8- 8d1 16e1 8f1 8d2 16- 8d2 8c2 16c2 8b1 8a1 16- 8g1 16g1 8b1 8a1 8g1 8f1 8e1
+```
